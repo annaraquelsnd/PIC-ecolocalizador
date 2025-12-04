@@ -1,0 +1,91 @@
+import processing.serial.*;
+
+Serial myPort;
+
+int iAngle1, iDistance1;
+int iAngle2, iDistance2;
+int iAngle3, iDistance3;
+
+String data;
+
+void setup() {
+  size(1366, 700);
+  smooth();
+  myPort = new Serial(this, "COM11", 9600);
+  myPort.bufferUntil('.');
+}
+
+void draw() {
+  background(0);
+  drawRadar();
+
+  drawLine(iAngle1, iDistance1, color(0,255,0));     // Frente (90°) – Verde
+  drawLine(iAngle2, iDistance2, color(0,150,255));   // Direita (30°) – Azul
+  drawLine(iAngle3, iDistance3, color(255,0,0));     // Esquerda (150°) – Vermelho
+
+  drawText();
+}
+
+void serialEvent(Serial myPort) {
+  data = myPort.readStringUntil('.');
+  data = trim(data);
+
+  String valores[] = split(data, ',');
+
+  if (valores.length == 6) {
+    iAngle1 = int(valores[0]);
+    iDistance1 = int(valores[1]);
+
+    iAngle2 = int(valores[2]);
+    iDistance2 = int(valores[3]);
+
+    iAngle3 = int(valores[4]);
+    iDistance3 = int(valores[5]);
+  }
+}
+
+void drawRadar() {
+  pushMatrix();
+  translate(683, 700);
+  noFill();
+  strokeWeight(2);
+  stroke(98, 245, 31);
+
+  arc(0, 0, 1300, 1300, PI, TWO_PI);
+  arc(0, 0, 1000, 1000, PI, TWO_PI);
+  arc(0, 0, 700, 700, PI, TWO_PI);
+  arc(0, 0, 400, 400, PI, TWO_PI);
+
+  line(-700, 0, 700, 0);
+  line(0, 0, -700*cos(radians(30)), -700*sin(radians(30)));
+  line(0, 0, -700*cos(radians(60)), -700*sin(radians(60)));
+  line(0, 0, -700*cos(radians(90)), -700*sin(radians(90)));
+  line(0, 0, -700*cos(radians(120)), -700*sin(radians(120)));
+  line(0, 0, -700*cos(radians(150)), -700*sin(radians(150)));
+  popMatrix();
+}
+
+void drawLine(int ang, int dist, int col) {
+  pushMatrix();
+  translate(683, 700);
+
+  stroke(col);
+  strokeWeight(3);
+
+  float pix = dist * 20;
+
+  line(0, 0,
+       pix * cos(radians(ang)),
+      -pix * sin(radians(ang)));
+
+  popMatrix();
+}
+
+void drawText() {
+  fill(98, 245, 31);
+  textSize(32);
+
+  text("Frente (90°): " + iDistance1 + " cm",   50, 50);
+  text("Direita (30°): " + iDistance2 + " cm",  50, 100);
+  text("Esquerda (150°): " + iDistance3 + " cm",50, 150);
+}
