@@ -4,7 +4,7 @@ Dispositivo de assistência baseado em **feedback tátil** para aumentar a **seg
 
 > Projeto desenvolvido na disciplina ==Projeto Integrado à Computação I== para a ==Mostra de Computação da UFES==.
 
-![alt text]({86666F63-DF43-4C68-9BB9-F8BC028EC884}.png)
+<img src="imagens/bike.png">
 
 ---
 
@@ -17,6 +17,9 @@ A percepção do ambiente não depende exclusivamente da visão. Casos como o de
   <a href="https://www.youtube.com/watch?v=pt5yYK_4Rjo">
     <img src="https://img.youtube.com/vi/pt5yYK_4Rjo/0.jpg" alt="Ben Underwood">
   </a>
+</p>
+<p align="center">
+▶️ Clique na imagem para assistir no YouTube
 </p>
 
 
@@ -235,23 +238,17 @@ Nossa equipe é composta por: André Luiz Mendes Siqueira de Freitas, Anna Raque
 
 </h4>
 
-<table>
+<table align="center" width="100%">
   <tr>
-    <td align="middle" width="40%">
-      
-Projeto **Pedal Inclusão**
-
-A equipe de robótica da UFES: **Erus**
-
-</td>
-<td align="middle" width="60%">
-      
-Ao integrante do Vitória Baja: 
-**Arthur Ferreira**
-
-À professora, **Mariana Lyra**, que nos auxiliou a fazer a placa PCB
-
-Ao professor da disciplina, **Jadir**
+    <td align="center" width="50%">
+      Ao projeto <strong>Pedal Inclusão</strong><br><br>
+      A equipe de robótica da UFES: <strong>Erus</strong>
+    </td>
+    <td align="center" width="50%">
+      Ao integrante do Vitória Baja:<br>
+      <strong>Arthur Ferreira</strong><br><br>
+      À professora, <strong>Mariana Lyra</strong>, que nos auxiliou a fazer a placa PCB<br><br>
+      Ao professor da disciplina, <strong>Jadir</strong>
     </td>
   </tr>
 </table>
