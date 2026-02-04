@@ -247,8 +247,12 @@ Nossa equipe é composta por: André Luiz Mendes Siqueira de Freitas, Anna Raque
     <td align="center" width="50%">
       Ao integrante do Vitória Baja:<br>
       <strong>Arthur Ferreira</strong><br><br>
-      À professora, <strong>Mariana Lyra</strong>, que nos auxiliou a fazer a placa PCB<br><br>
+      À professora, <strong>Mariana Lyra Silveira</strong>, que nos auxiliou a fazer a placa PCB<br><br>
       Ao professor da disciplina, <strong>Jadir</strong>
+      Ao integrante da turma <strong>Vinicius Cunha Martins</strong>
+      Ao integrande do PET de engenharia de computação <strong>Guido</strong>
+      Á integrante da turma <strong>Vitoria Gomes Fagundes</strong>
+      E aos demais que contribuiram de alguma forma para os projeto.
     </td>
   </tr>
 </table>
