@@ -2,15 +2,23 @@
 
 Dispositivo de assistência baseado em **feedback tátil** para aumentar a **segurança**, a **confiança** e a **autonomia** de pessoas com deficiência visual na condução de bicicletas tandem.
 
-> Projeto desenvolvido para a Mostra de Computação da UFES.
+> Projeto desenvolvido na disciplina ==Projeto Integrado à Computação I== para a ==Mostra de Computação da UFES==.
 
-[Foto do projeto montado]
+![alt text]({86666F63-DF43-4C68-9BB9-F8BC028EC884}.png)
 
 ---
+
 
 ## 📌 Contexto e Motivação
 
 A percepção do ambiente não depende exclusivamente da visão. Casos como o de **Ben Underwood** demonstram que outros sentidos podem ser explorados para navegação espacial.
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=pt5yYK_4Rjo">
+    <img src="https://img.youtube.com/vi/pt5yYK_4Rjo/0.jpg" alt="Ben Underwood">
+  </a>
+</p>
+
 
 Inspirados por essa ideia e por iniciativas como o projeto **Pedal Inclusão**, que utiliza bicicletas tandem para permitir que pessoas com deficiência visual pratiquem o ciclismo, tivemos contato direto com os desafios e possibilidades dessa experiência.
 
@@ -22,7 +30,7 @@ A partir dessa vivência, surgiu a necessidade de pensar em uma **solução téc
 
 ## 🎯 Objetivos do Projeto
 
-- Aumentar a segurança do ciclista com deficiência visual durante a condução da bicicleta
+-  Aumentar a segurança do ciclista com deficiência visual durante a condução da bicicleta 
 - Reduzir a dependência exclusiva de comandos verbais
 - Fornecer percepção espacial por meio de feedback tátil
 - Tornar a condução mais acessível e o esporte mais inclusivo
@@ -34,11 +42,11 @@ A partir dessa vivência, surgiu a necessidade de pensar em uma **solução téc
 O sistema é composto por dois módulos principais:
 
 - **Central no guidão da bicicleta**, responsável pela detecção de obstáculos
-- **Colete tátil**, responsável por transmitir informações espaciais ao ciclista por meio de vibração
+- **Colete tátil**, responsável por transmitir informações espaciais ao ciclista por meio da vibração
 
-A comunicação entre esses módulos permite que a presença e a direção de obstáculos sejam percebidas sem a necessidade de estímulos sonoros.
+A comunicação entre esses módulos permite que a presença e a direção de obstáculos sejam percebidas.
 
-[Visão geral do sistema]
+<img src="imagens/schematic_geral.png">
 
 ---
 
@@ -48,41 +56,90 @@ A comunicação entre esses módulos permite que a presença e a direção de ob
 
 A central é responsável pela leitura do ambiente à frente da bicicleta.
 
-Componentes principais:
-- Arduino
-- 3 sensores ultrassônicos
-- Alimentação dedicada
+#### Componentes principais:
+###### Arduino UNO
+- Contém o algoritmo que converte a distância medida em intensidade de vibração, configuráveis por meio de código
+```c++
+...
+// Dispara o pulso ultrassônico
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
 
-Os sensores estão posicionados no guidão, cobrindo aproximadamente **120°** à frente da bicicleta.
+// Lê o retorno
+long duracao = pulseIn(echoPin, HIGH);
+int distancia = duracao * 0.034 / 2;
 
-📎 Materiais disponíveis:
-- Schematic da central  
-- PCB da central  
-- Fotos da placa montada  
+// Calcula a Intensidade 
+int pwm = 0;
 
-[Central no guidão]
+if (distancia == 0 || distancia > DISTANCIA_MAX) {
+  pwm = 0; // Desligado
+} 
+else if (distancia < DISTANCIA_MIN) {
+  pwm = 255; // Vibração Máxima
+} 
+else {
+  // Quanto mais perto, mais forte
+  pwm = map(distancia, DISTANCIA_MIN, DISTANCIA_MAX, 255, 0);
+}
+
+// Aciona o Motor
+analogWrite(motorPin, pwm);
+...
+```
+
+###### 3 sensores ultrassônicos (HC-SR04)
+- Dispostos em três faces frontais do chassi angulados em **45º** entre si
+Tem um alcance de até 3 metros
+- Estão posicionados no guidão, cobrindo aproximadamente **120°** à frente da bicicleta.
+<table>
+  <tr>
+    <td>
+      <img src="imagens/chassi.png" width="100%" />
+    </td>
+    <td>
+      <img src="imagens/chassi2.png" width="100%" />
+  </tr>
+</table>
+
+###### Alimentação dedicada
+- Bateria 3.7v 18650 recarregável
+- Módulo Tp4056 para recarga
+
+Esses componentes são centralizados em uma placa PCB:
+<table>
+  <tr>
+    <td>
+      <img src="imagens/PCBCentral.png" width="300" height="500"/>
+    </td>
+    <td>
+      <img src="imagens/PCBMontada.png" height="500" width="400"/>
+  </tr>
+</table>
 
 ---
+<img src="imagens/colete.png" align="right" width="200" height="300">
 
 ### 🔹 Colete Tátil
 
-O colete é responsável por fornecer o feedback ao ciclista.
 
-Componentes principais:
+O colete é responsável por fornecer o feedback sensorial ao ciclista.
+
+
+##### Componentes principais:
 - 3 motores de vibração
 - PCB dedicada
+
+
 - Estrutura vestível (colete)
 
-Os motores estão posicionados:
+##### Os motores estão posicionados:
 - Um no centro do peito
 - Um em cada ombro
 
-📎 Materiais disponíveis:
-- Schematic do colete  
-- PCB do colete  
-- Fotos do colete e da confecção  
-
-[Colete tátil]
 ---
 
 ## 🔄 Mapeamento Sensor → Vibração
@@ -102,7 +159,7 @@ A informação captada pelos sensores é convertida em padrões de vibração, i
 | Componente | Quantidade | Função |
 |----------|------------|--------|
 | Arduino | 1 | Processamento dos dados |
-| Sensor ultrassônico | 3 | Detecção de obstáculos |
+| Sensor ultrassônico HC-SR04| 3 | Detecção de obstáculos |
 | Motor de vibração | 3 | Feedback tátil |
 | PCB personalizada | 2 | Integração do sistema |
 | Estrutura do colete | 1 | Fixação dos motores |
@@ -112,16 +169,36 @@ A informação captada pelos sensores é convertida em padrões de vibração, i
 
 ## 🛠️ Processo de Desenvolvimento
 
-O desenvolvimento do projeto passou pelas seguintes etapas:
+#### O desenvolvimento do projeto passou pelas seguintes etapas:
 
 - Levantamento do problema a partir de vivência prática
-- Prototipação inicial em bancada
-- Desenvolvimento dos esquemáticos
+- Idealização do aparelho
+- Levantamento de componentes necessários
+- Prototipação inicial
 - Projeto e confecção das PCBs
+- Modelagem e impressão 3D
 - Montagem dos módulos
 - Testes funcionais do sistema
 
-📸 Registros fotográficos do processo estão disponíveis na pasta `docs/imagens`.
+<table>
+  <tr>
+    <td>
+      <img src="imagens/esbocos.png" width="100%" />
+    </td>
+    <td>
+      <img src="imagens/acido.png" width="100%" />
+    </td>
+  </tr>
+</table>
+<table>
+    <td>
+      <img src="imagens/modelagem.png" width="100%" />
+    </td>
+    <td>
+      <img src="imagens/protoboard.png" width="100%" height="190"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -130,7 +207,6 @@ O desenvolvimento do projeto passou pelas seguintes etapas:
 ### Resultados
 - Detecção de obstáculos em tempo real
 - Feedback tátil claro e direcional
-- Funcionamento independente de estímulos sonoros
 - Integração confortável ao corpo do usuário
 
 ### Limitações
@@ -142,23 +218,40 @@ O desenvolvimento do projeto passou pelas seguintes etapas:
 
 ## 🔧 Como Reproduzir o Projeto
 
-- Os esquemáticos estão disponíveis em `docs/schematics`
-- Os modelos para impressão em
-- Os arquivos de PCB estão disponíveis em `docs/pcb`
-- O código-fonte está disponível na pasta `software`
-- As imagens e diagramas estão em `docs/imagens`
+- Os esquemáticos estão disponíveis em `/schematics`
+- Os modelos para impressão em `/models3D`
+- Os arquivos de PCB estão disponíveis em `/pcb`
+- O código-fonte está disponível na pasta `/src`
+- As imagens e diagramas estão em `/imagens`
 
 ---
 
 ## 👥 Equipe e Agradecimentos
 
-Projeto desenvolvido por estudantes da UFES para a disciplina Projeto Integrado de Computação I.
-
 Nossa equipe é composta por: André Luiz Mendes Siqueira de Freitas, Anna Raquel Sandrini, Arthur Manelli, Caetano Zandonade e Daniela Pimentel
 
-Agradecimentos especiais:
-- Projeto **Pedal Inclusão**
-- A equipe de robótica da UFES: Erus
-- Ao integrante do Vitória Baja: Arthur
-- À professora Mariana Lyra que nos auxiliou a fazer a placa PCB
-- Ao professor da disciplina Jadir
+<h4 align="center">  
+    Agradecimentos especiais
+
+</h4>
+
+<table>
+  <tr>
+    <td align="middle" width="40%">
+      
+Projeto **Pedal Inclusão**
+
+A equipe de robótica da UFES: **Erus**
+
+</td>
+<td align="middle" width="60%">
+      
+Ao integrante do Vitória Baja: 
+**Arthur Ferreira**
+
+À professora, **Mariana Lyra**, que nos auxiliou a fazer a placa PCB
+
+Ao professor da disciplina, **Jadir**
+    </td>
+  </tr>
+</table>
