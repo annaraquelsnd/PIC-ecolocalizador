@@ -27,7 +27,7 @@ Inspirados por essa ideia e por iniciativas como o projeto **Pedal Inclusão**, 
 
 Durante um desses eventos, observamos um participante com deficiência visual conduzir a bicicleta apenas com orientações verbais de sua dupla. A experiência evidenciou o potencial da atividade, mas também deixou claro que a condução exige um alto nível de confiança e depende fortemente do ciclista enxergante.
 
-A partir dessa vivência, surgiu a necessidade de pensar em uma **solução técnica** que aumentasse a sensação de segurança e encorajasse mais pessoas com deficiência visual a assumir a condução da bicicleta, tornando a atividade mais inclusiva.
+A partir dessa vivência, pensamos em uma **solução técnica** que aumentasse a sensação de segurança e encorajasse mais pessoas com deficiência visual a assumir a condução da bicicleta, tornando a atividade mais inclusiva.
 
 ---
 
