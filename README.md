@@ -2,7 +2,7 @@
 
 Dispositivo de assistência baseado em **feedback tátil** para aumentar a **segurança**, a **confiança** e a **autonomia** de pessoas com deficiência visual na condução de bicicletas tandem.
 
-> Projeto desenvolvido na disciplina ==Projeto Integrado à Computação I== para a ==Mostra de Computação da UFES==.
+> Projeto desenvolvido na disciplina **Projeto Integrado à Computação I** para a **Mostra de Computação da UFES**.
 
 <img src="imagens/bike.png">
 
