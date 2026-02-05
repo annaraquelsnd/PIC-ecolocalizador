@@ -15,14 +15,6 @@ int DIREITA = 0;
 int FRENTE = 0;
 
 
-void setResistence(byte output, pot_addr) {
-  Wire.beginTransmission(pot_addr);
-  Wire.write(0x00);     // comando: volume ambos canais
-  Wire.write(output);   // 0–63 determina a resistência do potenciometro digital
-  Wire.endTransmission();
-}
-
-
 void setup() {
   Serial.begin(9600);
 
@@ -53,11 +45,11 @@ void loop() {
   if (distEsquerda <= DISTANCE_LIMIT) ESQUERDA = 1;
   if (distDireita <= DISTANCE_LIMIT) DIREITA = 1;
 
-  pan_esquerda = ESQUERDA * (1 - (FRENTE * 0.25)); // Considerando os pans como Total Esq = 1; Dir = 0 | Frente Esquerda Esq: 0.75; Dir = 0.25 | Frente Esq: 0.5; Dir: 0.5 | Msm para direita
-  pan_direita = DIREITA * (1 - (FRENTE * 0.25)); 
+  // pan_esquerda = ESQUERDA * (1 - (FRENTE * 0.25)); // Considerando os pans como Total Esq = 1; Dir = 0 | Frente Esquerda Esq: 0.75; Dir = 0.25 | Frente Esq: 0.5; Dir: 0.5 | Msm para direita
+  // pan_direita = DIREITA * (1 - (FRENTE * 0.25)); 
 
-  output_esq  = map((distEsquerda * pan_esquerda), 0, 200, 63, 0);
-  output_dir = map((distDireita * pan_direita), 0, 200, 63, 0);
+  // output_esq  = map((distEsquerda * pan_esquerda), 0, 200, 63, 0);
+  //output_dir = map((distDireita * pan_direita), 0, 200, 63, 0);
 
   
 

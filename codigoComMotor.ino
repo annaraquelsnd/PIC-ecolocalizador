@@ -3,25 +3,25 @@
 // ============================================================
 
 // --- Lado ESQUERDO ---
-#define PINO_TRIG_ESQUERDA 7
-#define PINO_ECHO_ESQUERDA 6
-#define PINO_VIBRACAO_ESQUERDA 9 
+#define PINO_TRIG_ESQUERDA 8
+#define PINO_ECHO_ESQUERDA 7
+#define PINO_VIBRACAO_ESQUERDA 11
 
 // --- MEIO (Centro) ---
-#define PINO_TRIG_MEIO 5
-#define PINO_ECHO_MEIO 4
-#define PINO_VIBRACAO_MEIO 10    
+#define PINO_TRIG_MEIO 4
+#define PINO_ECHO_MEIO 5
+#define PINO_VIBRACAO_MEIO 10
 
 // --- Lado DIREITO ---
-#define PINO_TRIG_DIREITA 3
+#define PINO_TRIG_DIREITA 12
 #define PINO_ECHO_DIREITA 2
-#define PINO_VIBRACAO_DIREITA 11   
+#define PINO_VIBRACAO_DIREITA 9
 
 // ============================================================
 // CONFIGURAÇÕES GLOBAIS
 // ============================================================
-const int DISTANCIA_MIN = 20;  // cm (Vibração MÁXIMA)
-const int DISTANCIA_MAX = 100; // cm (Vibração INICIA aqui)
+const int DISTANCIA_MIN = 100;  // cm (Vibração MÁXIMA)
+const int DISTANCIA_MAX = 300; // cm (Vibração INICIA aqui)
 
 void setup() {
   Serial.begin(9600);
@@ -44,10 +44,10 @@ void setup() {
 
 void loop() {
   // Chamamos a função personalizada para cada conjunto
+  processarSensor(PINO_TRIG_DIREITA, PINO_ECHO_DIREITA, PINO_VIBRACAO_DIREITA, "Dir");
   processarSensor(PINO_TRIG_ESQUERDA, PINO_ECHO_ESQUERDA, PINO_VIBRACAO_ESQUERDA, "Esq");
   processarSensor(PINO_TRIG_MEIO, PINO_ECHO_MEIO, PINO_VIBRACAO_MEIO, "Meio");
-  processarSensor(PINO_TRIG_DIREITA, PINO_ECHO_DIREITA, PINO_VIBRACAO_DIREITA, "Dir");
-
+  
   // Pequeno delay para não sobrecarregar processamento e dar tempo aos ecos
   delay(10); 
 }
@@ -90,11 +90,14 @@ void processarSensor(int trigPin, int echoPin, int motorPin, String nome) {
   // 5. Debug (Opcional - para ver no Monitor Serial)
   // Descomente as linhas abaixo para testar
   
-  // Serial.print(nome);
-  // Serial.print(": ");
-  // Serial.print(distancia);
-  // Serial.print("cm -> PWM: ");
-  // Serial.println(pwm);
+  // if (nome == "Esq"){
+  //   Serial.print(nome);
+  //   Serial.print(": ");
+  //   Serial.print(distancia);
+  //   Serial.print("cm -> PWM: ");
+  //   Serial.println(pwm);
+  //   delay(500);
+  // }
   
 }
 
