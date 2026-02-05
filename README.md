@@ -2,7 +2,7 @@
 
 Dispositivo de assistência baseado em **feedback tátil** para aumentar a **segurança**, a **confiança** e a **autonomia** de pessoas com deficiência visual na condução de bicicletas tandem.
 
-> Projeto desenvolvido na disciplina **Projeto Integrado à Computação I** para a **Mostra de Computação da UFES**.
+> Projeto desenvolvido na disciplina **Projeto Integrado de Computação I** para a **Mostra de Computação da UFES** com o professor Jadir E. S. Lucas.
 
 <img src="imagens/bike.png">
 
@@ -25,7 +25,7 @@ A percepção do ambiente não depende exclusivamente da visão. Casos como o de
 
 Inspirados por essa ideia e por iniciativas como o projeto **Pedal Inclusão**, que utiliza bicicletas tandem para permitir que pessoas com deficiência visual pratiquem o ciclismo, tivemos contato direto com os desafios e possibilidades dessa experiência.
 
-Durante um desses eventos, observamos um participante com deficiência visual conduzir a bicicleta apenas com orientações verbais de sua dupla. A experiência evidenciou o potencial da atividade, mas também deixou claro que a condução exige um alto nível de confiança e depende fortemente do ciclista enxergante.
+Durante um desses eventos, observamos um participante com deficiência visual conduzir a bicicleta apenas com orientações verbais de sua dupla. A experiência evidenciou o potencial da atividade, mas também deixou claro que a condução exige um alto nível de confiança.
 
 A partir dessa vivência, pensamos em uma **solução técnica** que aumentasse a sensação de segurança e encorajasse mais pessoas com deficiência visual a assumir a condução da bicicleta, tornando a atividade mais inclusiva.
 
@@ -33,7 +33,7 @@ A partir dessa vivência, pensamos em uma **solução técnica** que aumentasse 
 
 ## 🎯 Objetivos do Projeto
 
--  Aumentar a segurança do ciclista com deficiência visual durante a condução da bicicleta 
+- Encorajar o ciclista com deficiência visual a conduzir a bicicleta 
 - Reduzir a dependência exclusiva de comandos verbais
 - Fornecer percepção espacial por meio de feedback tátil
 - Tornar a condução mais acessível e o esporte mais inclusivo
@@ -109,8 +109,8 @@ Tem um alcance de até 3 metros
 </table>
 
 ###### Alimentação dedicada
-- Bateria 3.7v 18650 recarregável
-- Módulo Tp4056 para recarga
+- Bateria 3.7V 18650 recarregável
+- Módulo de carregamento TP4056
 
 Esses componentes são centralizados em uma placa PCB:
 <table>
@@ -134,9 +134,7 @@ O colete é responsável por fornecer o feedback sensorial ao ciclista.
 
 ##### Componentes principais:
 - 3 motores de vibração
-- PCB dedicada
-
-
+- PCB
 - Estrutura vestível (colete)
 
 ##### Os motores estão posicionados:
@@ -198,7 +196,7 @@ A informação captada pelos sensores é convertida em padrões de vibração, i
       <img src="imagens/modelagem.png" width="100%" />
     </td>
     <td>
-      <img src="imagens/protoboard.png" width="100%" height="190"/>
+      <img src="imagens/protoboard.png" width="100%">
     </td>
   </tr>
 </table>
@@ -233,26 +231,10 @@ A informação captada pelos sensores é convertida em padrões de vibração, i
 
 Nossa equipe é composta por: André Luiz Mendes Siqueira de Freitas, Anna Raquel Sandrini, Arthur Manelli, Caetano Zandonade e Daniela Pimentel
 
-<h4 align="center">  
-    Agradecimentos especiais
+## 🤝 Agradecimentos Especiais
 
-</h4>
-
-<table align="center" width="100%">
-  <tr>
-    <td align="center" width="50%">
-      Ao projeto <strong>Pedal Inclusão</strong><br><br>
-      A equipe de robótica da UFES: <strong>Erus</strong>
-    </td>
-    <td align="center" width="50%">
-      Ao integrante do Vitória Baja:<br>
-      <strong>Arthur Ferreira</strong><br><br>
-      À professora, <strong>Mariana Lyra Silveira</strong>, que nos auxiliou a fazer a placa PCB<br><br>
-      Ao professor da disciplina, <strong>Jadir</strong><br><br>
-      Ao integrante da turma <strong>Vinicius Cunha Martins</strong><br><br>
-      Ao integrande do PET de engenharia de computação <strong>Guido</strong><br><br>
-      Á integrante da turma <strong>Vitoria Gomes Fagundes</strong><br><br>
-      E aos demais que contribuiram de alguma forma para os projeto.<br><br>
-    </td>
-  </tr>
-</table>
+| Categoria | Colaboradores |
+| :--- | :--- |
+| **Projetos & Equipes** | • Pedal Inclusão <br> • Erus (Equipe de Robótica da UFES) |
+| **Mentoria Técnica** | • **Profª Mariana Lyra Silveira** (Desenvolvimento da PCB) <br> • **Arthur Ferreira** (Vitória Baja) <br> • **Guido** (PET Engenharia de Computação) |
+| **Comunidade & Turma** | • Vinicius Cunha Martins <br> • Vitoria Gomes Fagundes <br> • e aos demais que contribuiram de alguma forma para os projeto. |
