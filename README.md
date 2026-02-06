@@ -61,7 +61,7 @@ A central é responsável pela leitura do ambiente à frente da bicicleta.
 
 #### Componentes principais:
 ###### Arduino UNO
-- Contém o algoritmo que converte a distância medida em intensidade de vibração, configuráveis por meio de código
+- Contém o algoritmo que converte a distância medida em intensidade de vibração. Quanto mais perto, maior é a intensidade da vibração.
 ```c++
 ...
 // Dispara o pulso ultrassônico
@@ -237,4 +237,4 @@ Nossa equipe é composta por: André Luiz Mendes Siqueira de Freitas, Anna Raque
 | :--- | :--- |
 | **Projetos & Equipes** | • Pedal Inclusão <br> • Erus (Equipe de Robótica da UFES) |
 | **Mentoria Técnica** | • **Profª Mariana Lyra Silveira** (Desenvolvimento da PCB) <br> • **Arthur Ferreira** (Vitória Baja) <br> • **Guido** (PET Engenharia de Computação) |
-| **Comunidade & Turma** | • Vinicius Cunha Martins <br> • Vitoria Gomes Fagundes <br> • e aos demais que contribuiram de alguma forma para os projeto. |
+| **Comunidade & Turma** | • Vinicius Cunha Martins <br> • Vitoria Gomes Fagundes <br> • e aos demais que contribuiram de alguma forma para o projeto. |
